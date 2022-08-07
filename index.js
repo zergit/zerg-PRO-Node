@@ -32,4 +32,4 @@ bot.on('text', (ctx) => {
 	ctx.reply('Привет');
 })
 
-bot.launch();
+bot.launch(); 
