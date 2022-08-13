@@ -23,5 +23,6 @@ DATABASE_URL =
 # Development
 + npm start
 + npm seed
++ npm run postinstall
 
 
