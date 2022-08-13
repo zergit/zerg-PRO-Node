@@ -11,6 +11,7 @@ class App {
 		await prisma.user.findFirst({ where: { id: 1 } })
 
 
+
 	}
 }
 
