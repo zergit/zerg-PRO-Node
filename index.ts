@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { Telegraf } from 'telegraf';
+import { Markup, Telegraf } from 'telegraf';
 import 'dotenv/config'
 
 
@@ -8,10 +8,6 @@ const prisma = new PrismaClient();
 class App {
 	async init() {
 		await prisma.$connect();
-		await prisma.user.findFirst({ where: { id: 1 } })
-
-
-
 	}
 }
 
@@ -26,8 +22,10 @@ if (!token) {
 
 const bot = new Telegraf(token);
 
-bot.on('text', (ctx) => {
-	ctx.reply('Привет');
+bot.command('test', (ctx) => {
+	ctx.reply('test', Markup.keyboard(
+		['Готово']
+	).oneTime().resize());
 })
 
 bot.launch(); 
