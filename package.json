@@ -1,0 +1,32 @@
+{
+  "name": "pro-node",
+  "version": "1.0.0",
+  "description": "Telegram Chat Bot",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": " node dist/index.js",
+    "seed": " node prisma/seed.js",
+    "test": "echo\"Error: no test specified\" && exit 1",
+    "postinstall": "npx prisma generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zergit/zerg-PRO-Node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zergit/zerg-PRO-Node/issues"
+  },
+  "homepage": "https://github.com/zergit/zerg-PRO-Node#readme",
+  "dependencies": {
+    "@prisma/client": "^4.2.1",
+    "dotenv": "^16.0.1",
+    "postinstall": "^0.7.4",
+    "telegraf": "^4.8.6"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.3"
+  }
+}
