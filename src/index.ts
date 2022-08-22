@@ -1,19 +1,17 @@
 import { PrismaClient } from '@prisma/client';
 import { Markup, Telegraf } from 'telegraf';
-import 'dotenv/config'
-
+import 'dotenv/config';
 
 const prisma = new PrismaClient();
 
 class App {
-	async init() {
+	async init(): Promise<void> {
 		await prisma.$connect();
 	}
 }
 
 const app = new App();
 app.init();
-
 
 const token = process.env.TOKEN;
 if (!token) {
@@ -23,9 +21,11 @@ if (!token) {
 const bot = new Telegraf(token);
 
 bot.command('test', (ctx) => {
-	ctx.reply('test', Markup.keyboard(
-		['Готово']
-	).oneTime().resize());
-})
+	ctx.reply('test', Markup.keyboard(['Город', 'Адрес']).oneTime().resize());
+});
 
-bot.launch(); 
+bot.on('text', (ctx) => {
+	ctx.reply('Привет');
+});
+
+bot.launch();
