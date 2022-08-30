@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": " node ./dist/src/index.js",
+    "start": " node ./dist/src/main.js",
     "dev": "nodemon",
     "build": "tsc",
     "seed": " node prisma/seed.js",
