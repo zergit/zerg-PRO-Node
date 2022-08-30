@@ -4,14 +4,11 @@ import 'dotenv/config';
 
 const prisma = new PrismaClient();
 
-class App {
-	async init(): Promise<void> {
+export class App {
+	public async init(): Promise<void> {
 		await prisma.$connect();
 	}
 }
-
-const app = new App();
-app.init();
 
 const token = process.env.TOKEN;
 if (!token) {
