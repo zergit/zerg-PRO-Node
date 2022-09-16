@@ -22,7 +22,7 @@ bot.command('test', (ctx) => {
 });
 
 bot.on('text', (ctx) => {
-	ctx.reply('Привет');
+	ctx.reply('pri');
 });
 
 bot.launch();

@@ -9,6 +9,7 @@ const Location = {
 
 async function main(): Promise<void> {
 	await prisma.$connect();
+	const createLocation = await prisma.location.create({ data: Location });
 	const createProducts = await prisma.products.createMany({ data: products });
 	await prisma.$disconnect();
 }

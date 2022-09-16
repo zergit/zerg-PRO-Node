@@ -53,8 +53,8 @@ model Products {
   updatedAt   DateTime @updatedAt
 }
 
-// model Location {
-//   id      Int    @id @default(autoincrement())
-//   city    String
-//   address String
-// }
+model Location {
+  id      Int    @id @default(autoincrement())
+  city    String
+  address String
+}
