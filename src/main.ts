@@ -1,4 +1,4 @@
-import { App } from './app.js';
+import { App } from './app';
 
 async function bootstrap(): Promise<void> {
 	const app = new App();

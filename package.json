@@ -2,8 +2,8 @@
   "name": "pro-node",
   "version": "1.0.0",
   "description": "Telegram Chat Bot",
-  "main": "index.js",
-  "type": "module",
+  "main": "main.js",
+  "type": "commonjs",
   "scripts": {
     "start": " node ./dist/src/main.js",
     "dev": "nodemon",
