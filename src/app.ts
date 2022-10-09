@@ -3,7 +3,6 @@ import { Markup, Scenes } from 'telegraf';
 import 'dotenv/config';
 import { MyContext } from './Types/context';
 import LocalSession from 'telegraf-session-local';
-
 import { bot } from './Bot/bot.service';
 import { addressScene, cityScene } from './Scenes/locationScenes';
 const prisma = new PrismaClient();
