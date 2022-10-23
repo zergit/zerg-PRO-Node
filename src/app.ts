@@ -5,11 +5,13 @@ import { MyContext } from './Types/context';
 import LocalSession from 'telegraf-session-local';
 import { bot } from './Bot/bot.service';
 import { addressScene, cityScene } from './Scenes/locationScenes';
+
 const prisma = new PrismaClient();
 
 export class App {
 	public async init(): Promise<void> {
 		await prisma.$connect();
+		await prisma.user.findMany({ where: { id: { gte: 1 } } });
 	}
 }
 
