@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 export class App {
 	public async init(): Promise<void> {
 		await prisma.$connect();
-		await prisma.user.findMany({ where: { id: { gte: 1 } } });
+		// await prisma.user.findMany({ where: { id: { gte: 1 } } });
 	}
 }
 
@@ -34,15 +34,18 @@ bot.start((ctx) =>
 	),
 );
 
-bot.help((ctx) => ctx.reply('Send me a sticker'));
-bot.on('sticker', (ctx) => ctx.reply('👍'));
-bot.hears('hi', (ctx) => ctx.reply('Hey there'));
 bot.command('test', (ctx) => {
 	ctx.reply('test', Markup.keyboard(['Город', 'Адрес']).oneTime().resize());
 });
 
-bot.on('text', (ctx) => {
-	ctx.reply('Привет, набери команду /start');
+bot.on('message', (msg) => {
+	const chatId = msg.chat.id;
+
+	bot.telegram.sendMessage(chatId, 'Ниже появится кнопка, заполни форму');
 });
+
+// bot.on('text', (ctx) => {
+// 	ctx.reply('Привет, набери команду /start');
+// });
 
 bot.launch();

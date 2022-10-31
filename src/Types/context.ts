@@ -10,6 +10,7 @@ interface MySession extends Scenes.SceneSession<MySessionScene> {
 
 export interface MyContext extends Context {
 	props: string;
+	text: string;
 	session: MySession;
 	scene: Scenes.SceneContextScene<MyContext, MySessionScene>;
 }
