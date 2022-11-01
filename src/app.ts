@@ -5,6 +5,7 @@ import { MyContext } from './Types/context';
 import LocalSession from 'telegraf-session-local';
 import { bot } from './Bot/bot.service';
 import { addressScene, cityScene } from './Scenes/locationScenes';
+import { webApp } from 'telegraf/typings/button';
 
 const prisma = new PrismaClient();
 
@@ -25,6 +26,16 @@ bot.use((ctx, next) => {
 	next();
 });
 
+const webAppUrl = 'https//ya.ru';
+
+bot.command('/test', (ctx) => {
+	ctx.reply('Заполните пожалуйста форму', Markup.keyboard(['Форма']));
+});
+
+bot.command('image', (ctx) => {
+	ctx.replyWithPhoto({ url: 'https://picsum.photos/200/300?random' });
+});
+
 bot.command('city', (ctx) => ctx.scene.enter('city'));
 bot.command('address', (ctx) => ctx.scene.enter('address'));
 
@@ -34,18 +45,21 @@ bot.start((ctx) =>
 	),
 );
 
-bot.command('test', (ctx) => {
-	ctx.reply('test', Markup.keyboard(['Город', 'Адрес']).oneTime().resize());
+bot.on('text', async (ctx) => {
+	// Explicit usage
+	await ctx.telegram.sendMessage(ctx.message.chat.id, 'Привет набери команду /start');
+
+	// Using context shortcut
+	await ctx.reply(`Hello ${ctx.state.role}`);
 });
 
-bot.on('message', (msg) => {
-	const chatId = msg.chat.id;
-
-	bot.telegram.sendMessage(chatId, 'Ниже появится кнопка, заполни форму');
-});
-
-// bot.on('text', (ctx) => {
-// 	ctx.reply('Привет, набери команду /start');
+// 	if (text === '/form') {
+// 		bot.telegram.sendMessage(chatId, 'Пожалуйста наберите команду /start', {
+// 			reply_markup: {
+// 				inline_keyboard: [[{ text: 'Заполнить форму', web_app: { url: webAppUrl } }]],
+// 			},
+// 		});
+// 	}
 // });
 
 bot.launch();

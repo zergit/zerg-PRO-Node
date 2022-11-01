@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 import { IProductsService } from '../src/Products/products.service.interface';
-import { user } from '../src/User/user.service';
 
 const prisma = new PrismaClient();
 
