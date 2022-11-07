@@ -1,20 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import { IProductsService } from '../src/Products/products.service.interface';
+import { IProductsService } from './products.service.interface';
 
-const prisma = new PrismaClient();
-
-async function main(): Promise<void> {
-	await prisma.$connect();
-
-	// const createProducts = await prisma.products.createMany({ data: products });
-	// const createUser = await prisma.userModel.createMany({ data: user });
-
-	await prisma.$disconnect();
-}
-
-main();
-
-const products: IProductsService[] = [
+export const products: IProductsService[] = [
 	{
 		id: 1,
 		title: 'Чай Сань Вэй',

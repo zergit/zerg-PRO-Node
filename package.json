@@ -2,11 +2,15 @@
   "name": "pro-node",
   "version": "1.0.0",
   "description": "Telegram Chat Bot",
-  "main": "index.js",
-  "type": "module",
+  "main": "main.js",
+  "type": "commonjs",
   "scripts": {
-    "start": " node dist/index.js",
+    "start": " node ./dist/src/main.js",
+    "dev": "nodemon",
+    "build": "tsc",
     "seed": " node prisma/seed.js",
+    "lint": "eslint ./src/**",
+    "lint:fix": "eslint ./src/** --fix",
     "test": "echo\"Error: no test specified\" && exit 1",
     "postinstall": "npx prisma generate"
   },
@@ -14,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/zergit/zerg-PRO-Node.git"
   },
-  "author": "",
+  "author": "Igrunin Sergey",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zergit/zerg-PRO-Node/issues"
@@ -22,11 +26,27 @@
   "homepage": "https://github.com/zergit/zerg-PRO-Node#readme",
   "dependencies": {
     "@prisma/client": "^4.2.1",
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.13.2",
     "dotenv": "^16.0.1",
+    "inversify": "^6.0.1",
     "postinstall": "^0.7.4",
-    "telegraf": "^4.8.6"
+    "reflect-metadata": "^0.1.13",
+    "telegraf": "^4.8.6",
+    "telegraf-session-local": "^2.1.0",
+    "tslog": "^3.3.4"
   },
   "devDependencies": {
-    "@types/node": "^18.7.3"
+    "@types/bcryptjs": "^2.4.2",
+    "@types/node": "^18.7.3",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   }
 }
